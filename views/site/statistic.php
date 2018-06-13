@@ -30,7 +30,6 @@ $this->title = 'Статистика кліків';
   <?php endforeach; ?>
   </tbody>
 </table>
-
 <?php
 if (isset ($pages)) {
 echo LinkPager::widget([

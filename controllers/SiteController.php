@@ -125,7 +125,13 @@ class SiteController extends Controller {
   }
 
   private function getClientId() {
-    return Yii::$app->getRequest()->getCookies()->get('clicks')->value;
+    if (isset(Yii::$app->getRequest()->getCookies()->get('clicks')->value)) {
+      return Yii::$app->getRequest()->getCookies()->get('clicks')->value;
+    }
+    else {
+      return '';
+    }
+
   }
 
   private function generateClientId() {
@@ -167,6 +173,7 @@ class SiteController extends Controller {
     $models = $clicks->offset($pages->offset)
       ->limit($pages->limit)
       ->all();
+
 
     return $this->render('statistic', ['models' => $models, 'pages' => $pages]);
 
